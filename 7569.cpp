@@ -33,6 +33,22 @@ int main(){
             int nz = z + dz[i], nx = x + dx[i], ny = y + dy[i];
             if(nz<0 || nz>=H || nx<0 || nx>=N || ny<0 || ny>=M)
                 continue;
+            visited[nz][nx][ny] = visited[z][x][y] +1;
+                q.push({nz,{nx,ny}});
         }
     }
+    int res;
+     for(int i=0;i<H;i++){
+        for(int j=0;j<N;j++){
+            for(int z=0;z<M;z++){
+                if(visited[i][j][z]==-1){
+                    cout<<-1;
+                    return 0;
+                }
+                res = max(res,visited[i][j][z]);
+            }
+        }
+     }
+     cout<<res;
+     
 }
