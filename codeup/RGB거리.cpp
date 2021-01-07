@@ -9,11 +9,12 @@ int arr[15][3];
 bool color[3];
 void dfs(int idx, int depth, int sum)
 {
-    printf("ì•žìª½: arr[%d][%d] = %d sum:%d min:%d\n", depth, idx, arr[depth][idx], sum + arr[depth][idx], Min);
+    //printf("first: arr[%d][%d] = %d sum:%d min:%d\n", depth, idx, arr[depth][idx], sum + arr[depth][idx], Min);
     if (depth != 0 && idx != 0)
     {
         if (sum + arr[depth][idx] > Min)
         {
+            //printf("¿©±â µé¾î¿Í¹ö¸²: %d > %d\n", sum + arr[depth][idx], Min);
             return;
         }
     }
@@ -23,7 +24,7 @@ void dfs(int idx, int depth, int sum)
 
         if (Min > sum + arr[depth][idx])
             Min = sum + arr[depth][idx];
-        printf("ë“¤ì–´ì™€ì„œ: arr[%d][%d] = %d sum:%d min:%d\n", depth, idx, arr[depth][idx], sum + arr[depth][idx], Min);
+        //printf("second: arr[%d][%d] = %d sum:%d min:%d\n", depth, idx, arr[depth][idx], sum + arr[depth][idx], Min);
         return;
     }
     if (idx == 0)
@@ -41,13 +42,6 @@ void dfs(int idx, int depth, int sum)
         dfs(idx - 1, depth + 1, sum + arr[depth][idx]);
         dfs(idx - 2, depth + 1, sum + arr[depth][idx]);
     }
-    // if(idx == n){
-
-    //     return;
-    // }
-    // for(int i=idx;i<n;i++){
-
-    // }
 }
 int main()
 {
@@ -71,6 +65,10 @@ int main()
         }
     }
     else
-        dfs(0, 0, 0);
+    {
+        for (int i = 0; i < 3; i++)
+            dfs(i, 0, 0);
+    }
+
     cout << Min << endl;
 }
