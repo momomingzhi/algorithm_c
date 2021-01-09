@@ -2,9 +2,7 @@
 #include <algorithm>
 #include <iostream>
 using namespace std;
-int n, k;
-int walk[10][2];
-int bike[10][2];
+int n, k, time[105][2], money[105][2];
 int dfs(int idx, int sum)
 {
     if (sum >= k)
@@ -16,23 +14,15 @@ int dfs(int idx, int sum)
     {
         return 0;
     }
-    //dfs()
+    dfs(idx + 1, 0);
+    dfs(idx + 1, 1);
 }
 int main()
 {
     cin >> n >> k;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < 2; j++)
-        {
-            cin >> walk[i][j];
-        }
-    }
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < 2; j++)
-        {
-            cin >> bike[i][j];
-        }
+        cin >> time[i][0] >> money[i][0];
+        cin >> time[i][1] >> money[i][1];
     }
 }
