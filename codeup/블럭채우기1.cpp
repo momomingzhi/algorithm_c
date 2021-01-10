@@ -3,6 +3,30 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+
+//dfs로 풀었을떄
+//가로를 2 새로를 1로 배치하는 아이디어
+int ans = 0;
+void fillGrid(int idx, int len)
+{
+    if (idx > len)
+        return;
+    if (idx == len)
+    {
+        ans++;
+        return;
+    }
+    fillGrid(idx + 1, len);
+    fillGrid(idx + 2, len);
+}
+int main()
+{
+    int len;
+    cin >> len;
+    fillGrid(0, len);
+    cout << ans << endl;
+}
+
 int dp[10010];
 int n;
 int main()
