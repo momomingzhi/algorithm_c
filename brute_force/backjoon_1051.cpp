@@ -1,4 +1,58 @@
 #include <iostream>
+
+#include <string>
+
+#include <algorithm>
+
+using namespace std;
+/*
+기본적인 브루트 포스 : 숫자 정사각형
+문제 잘못읽음 정사각형인줄 몰랐다..
+dfs로 해서 좀 더 에러 사항이 많았다
+*/
+
+const int MAX = 50;
+
+int N, M;
+
+int arr[MAX][MAX];
+
+int solve()
+{
+    int result = 1; //길이가 1인 정사각형이 최소이기때문에
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < M; j++)
+        {
+            for (int k = 1; k < min(N, M); k++)
+            {
+                if (i + k < N && j + k < M && arr[i + k][j] == arr[i][j] && arr[i + k][j + k] == arr[i][j] && arr[i][j + k] == arr[i][j])
+                {
+                    result = max(result, k + 1);
+                }
+            }
+        }
+    }
+    return result * result;
+}
+int main()
+{
+    cin >> N >> M;
+    for (int i = 0; i < N; i++)
+    {
+        string temp;
+        cin >> temp;
+
+        for (int j = 0; j < M; j++)
+        {
+            arr[i][j] = temp[j] - 'O';
+        }
+    }
+    cout << solve() << endl;
+}
+
+/*
+#include <iostream>
 #include <string>
 #include <algorithm>
 using namespace std;
@@ -39,3 +93,4 @@ int main(){
     cout<<MAX<<endl;
 
 }
+*/
